@@ -1,0 +1,44 @@
+@import '~antd/lib/style/themes/default.less';
+
+a{color:#0078ff;}
+.container {
+  width:100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background:linear-gradient(to bottom, #3a68e3, #43a6e6);
+  background: -webkit-gradient(linear, bottom left, from(#3a68e3), to(#43a6e6));
+}
+.wave{
+  width:100%;
+  height:70%;
+  position:absolute;
+  bottom:-15%;
+  left:0;
+  background:transparent;
+  z-index:10;
+}
+.bgvideo{
+  width:100%;
+  height:40%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:11;
+}
+.container :global(.ant-input) {
+  background: transparent;
+  color: #fff;
+}
+.container :global(.ant-input-affix-wrapper){
+  color:#fff;
+}
+.container :global(.login .prefixIcon) {
+  color:#fff;
+}
+
+
+

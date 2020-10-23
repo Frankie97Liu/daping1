@@ -1,0 +1,71 @@
+@import '~antd/lib/style/themes/default.less';
+.myInfo{
+    @orange:#464543;
+    width:260px;
+    height:360px;//400px
+    position:absolute;
+    right:0;
+    top:60px;
+    .header{
+        //color:@orange;
+        position: relative;
+        height:35px;
+        line-height:35px;
+        border-bottom:1px solid @orange;
+        span{
+            padding-left:10px;
+            font-size: 12px;
+        }
+        :global{
+            .anticon-close{
+                position: absolute;
+                right:10px;
+                top:8px;
+                cursor:pointer;
+                font-size:16px;
+                //color:@orange;
+                &:hover{
+                    color:darken(@orange,10%);
+                }
+            }
+        }
+    }
+    .main{
+        >li{
+            >span{
+                display:inline-block;
+                width:20px;
+                height:20px;
+                position:relative;
+                top:3px;
+            }
+        }
+        
+
+        padding:10px;
+        li{
+            height:38px;
+            padding-top:5px;
+            margin-bottom:6px;
+            line-height:normal;
+            position: relative;
+            list-style:none;
+            // background-color:#ececec;
+            &>div{
+                position: absolute;
+                left:28px;
+                top:8px;
+                width:80%;
+                font-size:12px;
+                div{
+                    //color:#fff;
+                    display: inline-block;
+                }
+                span{
+                    color:#00dffe;
+                    padding-left: 8px;
+                }
+            }
+        }
+    }
+}

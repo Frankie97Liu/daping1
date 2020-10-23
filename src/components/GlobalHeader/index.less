@@ -1,0 +1,315 @@
+@import '~antd/lib/style/themes/default.less';
+
+@themeColor:#00dffe;// 主题色
+@AuxiliaryColor1:#00fe9c;//辅助色1
+@AuxiliaryColor2:#ff465d;//辅助色2
+@text:#fff;//正文文字
+@AuxiliaryText:#3c8d99;//辅助文字
+@cutOff:rgba(0,223,254,0.3);//分割线
+@borderLine:rgba(0,223,254,0.3);//边框线
+
+:global{
+  .ant-dropdown-menu{
+    background-color:#001529;
+    color:@themeColor;
+  }
+  .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
+    background:rgb(24,144,255);
+  }
+  .ant-layout-header{
+    height:50px;
+    line-height:50px;
+  }
+  // Popconfirm样式调整
+  .ant-popover-inner{
+    .ant-popover-inner-content{
+      padding: 12px 16px 4px;
+      .ant-popover-buttons{
+        .ant-btn-primary{
+          display:none;
+        }
+      }
+    }
+  }
+}
+
+
+.header {
+  height: 50px;
+  padding: 0 10px 0 0;
+  position: relative;
+  .mr{
+    margin-right:20px;
+    color:#fff;
+  }
+}
+
+.search{
+  width:304px;
+}
+
+.myLink{
+  display:inline-block;
+  width:100px;
+  height:13px;
+  line-height:13px;
+  fontsize:13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #ffffff;
+}
+.myLink:hover{
+  color: #ffffff;
+}
+
+.numIcon{
+  display:inline-block;
+  width:16px;
+  height:16px;
+  line-height:16px;
+  text-align:center;
+  font-size: 10px;
+  background: red;
+  color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 999;
+  top: -6px;
+  left: 10px;
+  font-style: inherit;
+}
+
+
+.header :global {
+  .ant-input-search{
+    top:0px;
+    .ant-input{
+      border:rgba(0,223,254,0.3);
+      border-radius:1px;
+      color:rgb(255,255,255);
+      font-size:14px;
+    }
+    .ant-input-suffix .ant-btn-primary{
+      background:transparent;
+      border:none;
+      padding:0;
+
+      >span{
+        padding-left:15px;
+        padding-right:10px;
+        width:100%;
+        border-left:1px solid rgba(255,255,255,0.7);
+      }
+    }
+    .ant-btn:hover, .ant-btn:focus{
+      color:#f3bb0e;
+    }
+  }
+  .ant-layout {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .ant-layout-header{
+    background: transparent ;
+    height: 50px;
+    line-height: 50px;
+  }
+  .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+    line-height: 35px;
+    height: 35px;
+  }
+  .ant-menu-sub.ant-menu-inline > .ant-menu-item, .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+    line-height: 35px;
+    height: 35px;
+  }
+  .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+    padding:0 10px !important;
+    line-height: 35px;
+    height: 35px;
+  }
+
+  .ant-menu-horizontal > .ant-menu-submenu-selected{
+    border-bottom:none;
+  }
+  .ant-menu-horizontal > .ant-menu-submenu-open{
+    border-bottom: 2px solid #1890ff;
+  }
+  .ant-menu-horizontal.antTran> .ant-menu-submenu:hover{
+    border-bottom: 2px solid #1890ff;
+  }
+
+}
+
+//这个样式没法加外层class名
+:global{
+  .ant-menu-submenu > .ant-menu{
+    padding:0 !important;
+  }
+}
+
+.logo {
+  padding: 0 15px;
+  cursor: pointer;
+  float: left;
+  img {
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.menu {
+  :global(.anticon) {
+    margin-right: 8px;
+  }
+  :global(.ant-dropdown-menu-item) {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color:#fff;
+  }
+}
+
+i.trigger {
+  font-size: 20px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  padding: 0 24px;
+  &:hover {
+    // background: @primary-1;
+  }
+}
+
+.rightMenu{
+  font-size: 16px;
+  margin-right:15px;
+  span{
+    color:rgb(245,245,245);
+    font-size:13px;
+    padding-left:2px;
+    position: relative;
+    top:-1px;
+  }
+}
+
+
+.right {
+  float: right;
+  height: 100%;
+  .action {
+    cursor: pointer;
+    padding: 0 12px;
+    display: inline-block;
+    transition: all 0.3s;
+    height: 100%;
+    > i {
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    &:hover,
+    &:global(.ant-popover-open) {
+      background: @primary-1;
+    }
+  }
+  .search {
+    padding: 0;
+    margin: 0 12px;
+    &:hover {
+      background: transparent;
+    }
+  }
+  .account {
+    .avatar {
+      margin: 20px 8px 20px 0;
+      background: rgba(255, 255, 255, 0.85);
+      vertical-align: middle;
+    }
+  }
+    .messageIcon {
+      margin-right: 15px;
+      font-size: 16px;
+      span{
+        font-size:13px;
+        padding-left:2px;
+        position: relative;
+        top:-1px;
+      }
+    }
+    .treeIcon{
+      font-size: 16px;
+      color:#fff;
+    }
+
+
+}
+
+@media only screen and (max-width: @screen-md) {
+  .header {
+    :global(.ant-divider-vertical) {
+      vertical-align: unset;
+    }
+    .name {
+      display: none;
+    }
+    i.trigger {
+      padding: 0 12px;
+    }
+    .logo {
+      padding-right: 12px;
+      position: relative;
+    }
+    .right {
+      position: absolute;
+      right: 12px;
+      top: 0;
+      .account {
+        .avatar {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+.icon11{
+  padding-right: 5px;
+}
+.userLogo{
+    font-size: 13px;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right:7px;
+    margin-top:-3px;
+    position:relative;
+  color:#fff;
+    img{
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin-top:-5px;
+    }
+    i{
+        margin-left: 5px;
+    }
+    span{
+      display: inline-block;
+      text-align: center;
+    }
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.treeTools{
+   i{
+        color: #fff
+   }
+}
+

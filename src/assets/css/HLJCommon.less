@@ -1,0 +1,38 @@
+:global {
+  .ant-menu {
+    color: #fff;
+  }
+}
+
+/* tab切换 */
+.comTabs{
+  background:#fff;
+  :global{
+    .ant-tabs-nav-wrap{
+      margin-left:32px;
+    }
+  }
+}
+
+:global{
+  /* 分页 */
+  .ant-table-pagination.ant-pagination{
+    margin:15px;
+  }
+  /* 表格 */
+  .ant-table-thead, .ant-table{
+    font-size:12px;
+  }
+  .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+    padding: 10px;
+  }
+}
+
+/* 隔行表格 */
+.zebraTable{
+  :global{
+    .ant-table-tbody tr:nth-child(even){
+      background-color:rgb(244,248,251);
+    }
+  }
+}

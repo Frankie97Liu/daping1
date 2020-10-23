@@ -1,0 +1,105 @@
+@import '~antd/lib/style/themes/default.less';
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+.logo {
+  height: 50px;
+  position: relative;
+  line-height: 50px;
+  padding-left: (@menu-collapsed-width - 50px) / 2;
+  transition: all 0.3s;
+  overflow: hidden;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+  }
+  span {
+    color: #00dffe;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    margin: 0 0 0 8px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+}
+
+.sider {
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  position: relative;
+  z-index: 10;
+  &.ligth {
+    background-color: white;
+    .logo {
+      background: white;
+      h1 {
+        color: #002140;
+      }
+    }
+  }
+}
+
+.icon {
+  width: 14px;
+}
+
+:global {
+  // .drawer .drawer-content {
+  //   background: #001529;
+  // }
+
+  .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
+    padding: 0 26px !important;
+  }
+
+  .ant-menu-inline-collapsed {
+    & > .ant-menu-item .sider-menu-item-img + span,
+    &
+      > .ant-menu-item-group
+      > .ant-menu-item-group-list
+      > .ant-menu-item
+      .sider-menu-item-img
+      + span,
+    & > .ant-menu-submenu > .ant-menu-submenu-title .sider-menu-item-img + span {
+      max-width: 0;
+      display: inline-block;
+      opacity: 0;
+    }
+  }
+  .ant-menu-item .sider-menu-item-img + span,
+  .ant-menu-submenu-title .sider-menu-item-img + span {
+    transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+    opacity: 1;
+  }
+  .ant-layout-sider-collapsed .ant-layout-sider-children .logo {
+    padding-left: (@menu-collapsed-width - @menu-collapsed-width );
+  }
+  .ant-menu-inline .ant-menu-submenu-title {
+    margin-bottom: 0; margin-top: 0; font-size: 14px;
+  }
+  .ant-menu-inline .ant-menu-item {
+    font-size: 13px;
+  }
+  .ant-menu-inline .ant-menu-submenu-inline .ant-menu-submenu-title {
+    font-size: 13px;
+  }
+  .ant-menu-vertical .ant-menu-item {
+    font-size: 13px; height:30px; line-height: 30px; text-align: center;
+  }
+  .ant-menu-vertical .ant-menu-item:not(:last-child) {
+    margin-bottom: 0px;
+  }
+  .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    border-radius: 3px;
+  }
+  .ant-menu-submenu-inline .ant-menu-submenu-inline .ant-menu-sub.ant-menu-inline > .ant-menu-item {
+    font-size: 12px;
+    padding-left: 45px !important;
+  }
+
+}
+.anticon{
+    margin-right: 10px;
+}
+
+

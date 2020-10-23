@@ -1,0 +1,107 @@
+@import '~antd/lib/style/themes/default.less';
+.change{
+    @orange:#464543;
+    @red:#dd081c;
+    width:250px;
+    height:327px;
+    // background-color: rgba(255,255,255,0.9);
+    position:absolute;
+    left:15px;
+    top:60px;
+    // border:1px solid #fff;
+    border-radius:3px;
+    .header{
+        color:@orange;
+        position: relative;
+        height:35px;
+        line-height:35px;
+        border-bottom:1px solid @orange;
+        span{
+            padding-left:10px;
+            font-size: 12px;
+        }
+        :global{
+            .anticon-close{
+                position: absolute;
+                right:10px;
+                top:8px;
+                cursor:pointer;
+                font-size:16px;
+                color:@orange;
+                &:hover{
+                    color:darken(@orange,10%);
+                }
+            }
+        }
+    }
+    .main{
+        ul{
+            padding:10px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            li{
+                list-style: none;
+                line-height: normal;
+                margin:5px 0 20px 0;
+                //color:#fff;
+                &:last-child{
+                    margin-bottom:10px;
+                }
+                span{
+                    b{
+                        font-size:14px;
+                        color:@red;
+                        margin-left: 5px;
+                    }
+                }
+                :global{
+                    .ant-input{
+                        margin-top:5px;
+                        //background-color:rgba(0,223,254,0.1);
+                        //border-color:rgba(0,223,254,0.3);
+                        //color:#00dffe;
+                    }
+                    /*::-webkit-input-placeholder{
+                        color:#3c8d99;
+                    }
+                    :-moz-placeholder{
+                        color:#3c8d99;
+                    }
+                    ::-moz-placeholder{
+                        color:#3c8d99;
+                    }
+                    :-ms-input-placeholder{
+                        color:#3c8d99;
+                    }*/
+                }
+            }
+        }
+        div{
+            width:100%;
+            text-align: right;
+            padding:10px 8px 0 0;
+            :global{
+                // .default .ant-btn:focus{
+                //     border-color:#333;
+                //     color:#333;
+                // }
+                .ant-btn{
+                    background-color:transparent;
+                    border-color:#00dffe;
+                    color:#00dffe;
+                }
+                .ant-btn.ant-btn-primary{
+                    background-color:#00dffe;
+                    border-color:#00dffe;
+                    color:#fff;
+                    
+                    // &.ant-btn-clicked{
+                    //     color:#fff;
+                    //     background-color:lighten(@orange,10%);
+                    //     border-color:lighten(@orange,10%);
+                    // }
+                }
+            }
+        }
+    }
+}
