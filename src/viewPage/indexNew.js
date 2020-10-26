@@ -8,7 +8,10 @@ import ReactEcharts from 'echarts-for-react';
 import '../assets/js/china';
 import News from '../../src/components/news_AutoRuns'
 import list from '../assets/images/list.png'
-import virus from '../assets/images/virus.jpg'
+import virus from '../assets/images/message.png'
+import num from '../assets/images/number.png'
+import user from '../assets/images/user.png'
+import percent from '../assets/images/percent.png'
 
 const dataSource = [
   {
@@ -129,7 +132,7 @@ class start extends Component {
         textStyle: {
           align: 'left',
           color: '#849ad6',
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 500
         },
       },
@@ -185,7 +188,7 @@ class start extends Component {
         textStyle: {
           align: 'left',
           color: '#849ad6',
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 500
         },
       },
@@ -268,7 +271,7 @@ class start extends Component {
         textStyle: {
           align: 'left',
           color: '#849ad6',
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 500
         },
       },
@@ -10331,7 +10334,7 @@ class start extends Component {
     if (num == 1) {
       this.setState({
         num: num,
-        msg: '昨日',
+        msg: '昨日'
       })
     } else if( num == 2) {
       this.setState({
@@ -10390,7 +10393,7 @@ class start extends Component {
               </div>
               <div className={styles.ldown}>
                 <div><img src={virus} style={{height: '22px'}}/>
-                  <span style={{color: '#836de8',fontSize: '12px'}}>信息播报</span>
+                  <span style={{color: '#836de8',fontSize: '14px'}}>信息播报</span>
                 </div>
                 <Row>
                   <Col span={1} style={{ marginLeft: '5px',marginTop: '20px'}}>
@@ -10408,9 +10411,8 @@ class start extends Component {
                 {/*</Timeline>*/}
 
               </div>
-
             </Col>
-            <Col span={13} className={styles.mid}>
+            <Col span={12} className={styles.mid}>
               <div className={styles.mup}>
                 <ReactEcharts option={this.getOptionmap()}  style={{ height: '64vh' }} />
 
@@ -10419,16 +10421,16 @@ class start extends Component {
 
                 <Row className={styles.fline} >
                   <Col className={styles.title1} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>使用次数
+                    <img src={num} style={{height: '20px'}}/>使用次数
                   </Col>
                   <Col className={styles.title2} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>新增用户
+                    <img src={user} style={{height: '20px'}}/>新增用户
                   </Col>
                   <Col className={styles.title3} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>活跃用户/总注册用户
+                    <img src={user} style={{height: '20px'}}/>活跃用户/总注册用户
                   </Col>
                   <Col className={styles.title4} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>活跃占比
+                    <img src={percent} style={{height: '20px'}}/>活跃占比
                   </Col>
                 </Row>
                 <Row className={styles.sline}>
@@ -10467,7 +10469,7 @@ class start extends Component {
 
               </div>
               <div className={styles.r4}>
-                <div style={{ height: '2vh',fontSize:12,color:'#849ad6',fontWeight:500,marginLeft:10 }}>使用类型占比分析</div>
+                <div style={{ height: '2vh',fontSize:14,color:'#849ad6',fontWeight:500,marginLeft:10 }}>使用类型占比分析</div>
                 <ReactEcharts option={this.getOption4()}  style={{ height: '18vh' }}/>
               </div>
             </Col>
