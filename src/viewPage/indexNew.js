@@ -46,6 +46,41 @@ const dataSource = [
     address: 22,
     dead:12,
   },
+  {
+    key: '6',
+    name: '西藏',
+    age: 32,
+    address: 22,
+    dead:12,
+  },
+  {
+    key: '7',
+    name: '云南',
+    age: 42,
+    address: 22,
+    dead:12,
+  },
+  {
+    key: '8',
+    name: '江苏',
+    age: 42,
+    address: 22,
+    dead:12,
+  },
+  {
+    key: '9',
+    name: '贵州',
+    age: 42,
+    address: 22,
+    dead:12,
+  },
+  {
+    key: '10',
+    name: '四川',
+    age: 42,
+    address: 22,
+    dead:12,
+  },
 ];
 const columns = [
   {
@@ -54,19 +89,22 @@ const columns = [
     key: 'name',
   },
   {
-    title: '确诊',
+    title: '使用次数',
     dataIndex: 'age',
     key: 'age',
+    align: 'center'
   },
   {
-    title: '治愈',
+    title: '累计用户',
     dataIndex: 'address',
     key: 'address',
+    align: 'center'
   },
   {
-    title: '死亡',
+    title: '新增用户',
     dataIndex: 'dead',
     key: 'dead',
+    align: 'center'
   },
 ];
 class start extends Component {
@@ -74,7 +112,8 @@ class start extends Component {
   constructor(props) {
      super(props);
      this.state = {
-       num: 1
+       num: 1,
+       msg: '昨日'
      };
   }
 
@@ -86,11 +125,12 @@ class start extends Component {
   getOption1 = () => {
     return {
       title: {
-        text: '本日新增用户',
+        text: '新增用户',
         textStyle: {
           align: 'left',
           color: '#849ad6',
           fontSize: 12,
+          fontWeight: 500
         },
       },
       grid: {
@@ -141,11 +181,12 @@ class start extends Component {
   getOption2 = () => {
     return {
       title: {
-        text: '全国疑似新增',
+        text: '活跃用户',
         textStyle: {
           align: 'left',
           color: '#849ad6',
           fontSize: 12,
+          fontWeight: 500
         },
       },
       color: ['#fa0021','#7364e9'],
@@ -228,6 +269,7 @@ class start extends Component {
           align: 'left',
           color: '#849ad6',
           fontSize: 12,
+          fontWeight: 500
         },
       },
       grid: {
@@ -277,21 +319,20 @@ class start extends Component {
   };
   getOption4 = () => {
     const data = [{
-      name: '数据1',
+      name: '上传',
       value: 36,
       rate: 12
     },
       {
-        name: '数据2',
+        name: '下载',
         value: 20,
         rate: 20
       },
       {
-        name: '数据3',
+        name: 'SQL',
         value: 16,
         rate: -40
       },
-
     ]
     return {
       title: {
@@ -10203,7 +10244,7 @@ class start extends Component {
         tooltip: {},
         series: [{
           type: 'map',
-          name: '确诊人数',
+          name: '新增人数',
           map: 'china',
           roam: true
         }
@@ -10287,9 +10328,23 @@ class start extends Component {
   }
 
   setNum = (num) => {
-    this.setState({
-      num: num,
-    })
+    if (num == 1) {
+      this.setState({
+        num: num,
+        msg: '昨日',
+      })
+    } else if( num == 2) {
+      this.setState({
+        num: num,
+        msg: '上月'
+      })
+    } else if (num == 3) {
+      this.setState({
+        num: num,
+        msg: '去年'
+      })
+    }
+
   }
 
   callback = (key) => {
@@ -10304,27 +10359,27 @@ class start extends Component {
           </div>
           <div className={styles.title}>
             <Row>
-              <Col span={6} onClick={()=>{this.setNum(1)}}>
+              <Col span={8} onClick={()=>{this.setNum(1)}}>
                 <span className={this.state.num == 1 ? styles.titlechoose : styles.titleItem}>
                   本日情况
                 </span>
               </Col>
-              <Col 
-                span={6} onClick={()=>{this.setNum(2)}}>
+              <Col
+                span={8} onClick={()=>{this.setNum(2)}}>
                 <span className={this.state.num == 2 ? styles.titlechoose : styles.titleItem} >
                   本月情况
-                </span>              
+                </span>
               </Col>
-              <Col span={6} onClick={()=>{this.setNum(3)}}>
+              <Col span={8} onClick={()=>{this.setNum(3)}}>
                 <span className={this.state.num == 3 ? styles.titlechoose : styles.titleItem} >
                   本年情况
-                </span>          
+                </span>
               </Col>
-              <Col span={6} onClick={()=>{this.setNum(4)}}>
+              {/*<Col span={6} onClick={()=>{this.setNum(4)}}>
                 <span className={this.state.num == 4 ? styles.titlechoose : styles.titleItem} >
                   累计情况
-                </span>                
-              </Col>
+                </span>
+              </Col>*/}
             </Row>
           </div>
         <div className={styles.content}>
@@ -10335,23 +10390,23 @@ class start extends Component {
               </div>
               <div className={styles.ldown}>
                 <div><img src={virus} style={{height: '22px'}}/>
-                  <span style={{color: '#836de8'}}>疫情播报</span>
+                  <span style={{color: '#836de8',fontSize: '12px'}}>信息播报</span>
                 </div>
                 <Row>
                   <Col span={1} style={{ marginLeft: '5px',marginTop: '20px'}}>
-                    <img src={list} style={{height: '150px',objectFit:'cover'}}/>
+                    <img src={list} style={{height: '18vh',objectFit:'cover'}}/>
                   </Col>
                   <Col span={19}>
                     <News />
                   </Col>
                 </Row>
-                
+
                 {/*<Timeline>*/}
                 {/*  <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>*/}
                 {/*  <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>*/}
                 {/*  <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>*/}
                 {/*</Timeline>*/}
-                
+
               </div>
 
             </Col>
@@ -10364,41 +10419,41 @@ class start extends Component {
 
                 <Row className={styles.fline} >
                   <Col className={styles.title1} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>本日使用次数
+                    <img src={virus} style={{height: '20px'}}/>使用次数
                   </Col>
                   <Col className={styles.title2} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>本日新用户
+                    <img src={virus} style={{height: '20px'}}/>新增用户
                   </Col>
                   <Col className={styles.title3} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>本日活跃用户/总注册用户
+                    <img src={virus} style={{height: '20px'}}/>活跃用户/总注册用户
                   </Col>
                   <Col className={styles.title4} span={6}>
-                    <img src={virus} style={{height: '20px'}}/>本日活跃占比
+                    <img src={virus} style={{height: '20px'}}/>活跃占比
                   </Col>
                 </Row>
                 <Row className={styles.sline}>
-                  <Col className={styles.title1} span={6}>1111</Col>
-                  <Col className={styles.title2} span={6}>21</Col>
-                  <Col className={styles.title3} span={6}>11/22</Col>
+                  <Col className={styles.title1} span={6} style={{ color: '#e02828'}}>1111</Col>
+                  <Col className={styles.title2} span={6} style={{ color: '#0456f9'}}>21</Col>
+                  <Col className={styles.title3} span={6} >11/<span style={{ color: '#65c456'}}>22</span></Col>
                   <Col className={styles.title4} span={6}>20%</Col>
                 </Row>
                 <Row className={styles.tline}>
-                  <Col className={styles.title1} span={6}>同比昨日 +2</Col>
-                  <Col className={styles.title2} span={6}>同比昨日 +2</Col>
-                  <Col className={styles.title3} span={6}>同比昨日 +2</Col>
-                  <Col className={styles.title4} span={6}>同比昨日 +2</Col>
+                  <Col className={styles.title1} span={6}>同比{this.state.msg} <span style={{color: '#e02828'}}>+2</span></Col>
+                  <Col className={styles.title2} span={6}>同比{this.state.msg} <span style={{ color: '#0456f9'}}>+2</span></Col>
+                  <Col className={styles.title3} span={6}>同比{this.state.msg} <span style={{ color: '#65c456'}}>+2</span></Col>
+                  <Col className={styles.title4} span={6}>同比{this.state.msg} +2</Col>
                 </Row>
 
               </div>
             </Col>
             <Col span={6} className={styles.right}>
-              <div className={styles.rtitle}>
+              {/*<div className={styles.rtitle}>
                 <Radio.Group defaultValue="a" buttonStyle="solid" size="small">
-                  <Radio.Button value="a">按小时分析</Radio.Button>
+                  <Radio.Button value="a">按时分析</Radio.Button>
                   <Radio.Button value="b">按日分析</Radio.Button>
                   <Radio.Button value="c">按月分析</Radio.Button>
                 </Radio.Group>
-              </div>
+              </div>*/}
               <div className={styles.r1}>
                 <ReactEcharts option={this.getOption1()}  style={{ height: '20vh' }}/>
 
@@ -10412,7 +10467,7 @@ class start extends Component {
 
               </div>
               <div className={styles.r4}>
-                <div style={{ height: '2vh',fontSize:12,color:'#849ad6',fontWeight:'bold',marginLeft:10 }}>本日使用类型占比分析</div>
+                <div style={{ height: '2vh',fontSize:12,color:'#849ad6',fontWeight:500,marginLeft:10 }}>使用类型占比分析</div>
                 <ReactEcharts option={this.getOption4()}  style={{ height: '18vh' }}/>
               </div>
             </Col>
