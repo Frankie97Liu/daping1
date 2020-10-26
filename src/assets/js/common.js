@@ -1,9 +1,9 @@
 // 标题配置
 export  const companyTit = "BONC";
 export  const logoTit = ""
-export  const projectTit = "国家优质工程奖";
+export  const projectTit = "命令客户端数据视图";
 // 版权信息
-export  const copyright ="中国施工企业管理协会 Copyright © 2018";
+export  const copyright ="东方国信 Copyright © 2018";
 // 无登录开关 true无登录  false 需要登录
 export const nologin = true;
 

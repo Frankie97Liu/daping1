@@ -10334,7 +10334,9 @@ class start extends Component {
                 <Table className={styles.lupword} dataSource={dataSource} columns={columns} size="small" />
               </div>
               <div className={styles.ldown}>
-                <div><img src={virus} style={{height: '24px'}}/>疫情播报</div>
+                <div><img src={virus} style={{height: '22px'}}/>
+                  <span style={{color: '#836de8'}}>疫情播报</span>
+                </div>
                 <Row>
                   <Col span={1} style={{ marginLeft: '5px',marginTop: '20px'}}>
                     <img src={list} style={{height: '150px',objectFit:'cover'}}/>
