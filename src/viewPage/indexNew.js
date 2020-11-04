@@ -11,6 +11,9 @@ import list from '../assets/images/list.png'
 import virus from '../assets/images/message.png'
 import num from '../assets/images/number.png'
 import user from '../assets/images/user.png'
+import addUser from '../assets/images/addUser.png'
+import activeUser from '../assets/images/activeUser.png'
+import nn from '../assets/images/nn.png'
 import percent from '../assets/images/percent.png'
 
 const dataSource = [
@@ -90,6 +93,7 @@ const columns = [
     title: '地区',
     dataIndex: 'name',
     key: 'name',
+    align: 'center',
   },
   {
     title: '使用次数',
@@ -110,8 +114,8 @@ const columns = [
     align: 'center'
   },
 ];
-class start extends Component {
 
+class start extends Component {
   constructor(props) {
      super(props);
      this.state = {
@@ -120,18 +124,21 @@ class start extends Component {
      };
   }
 
-
   componentDidMount(){
 
   }
 
+  componentWillMount() {
+  }
+
+  // 新增用户
   getOption1 = () => {
     return {
       title: {
         text: '新增用户',
         textStyle: {
           align: 'left',
-          color: '#849ad6',
+          color: '#575fc0',
           fontSize: 14,
           fontWeight: 500
         },
@@ -146,48 +153,89 @@ class start extends Component {
       xAxis: {
         axisLabel: {
           textStyle: {
-            color:'#849ad6',
+            color:'#777',
             fontSize:12
 
           },
         },
+        splitLine: {
+          show: false
+        },
+        axisTick: {
+          //alignWithLabel: true
+          show: false
+        },
         axisLine: {
           lineStyle: {
-            color: "#849ad6"
+            color: "#ccc"
           }
         },
-        data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14',
+        '15', '16', '17', '18', '19', '20', '21', '22', '23']
       },
       yAxis: {
         axisLabel: {
           textStyle: {
-            color:'#849ad6',
+            color:'#777',
             fontSize:12
 
           },
         },
+        splitLine: {
+          lineStyle: {
+            color: '#f1f1f1'
+          }
+        },
+        axisTick: {
+          //alignWithLabel: true
+          show: false
+        },
         axisLine: {
           lineStyle: {
-            color: "#849ad6"
+            color: "#ccc"
           }
         }
       },
       series: [{
         type: 'line',
-        data:[220, 182, 191, 234, 290, 330, 310]
-      }, {
-        type: 'line',
-        data:[230, 192, 201, 244, 300, 310, 300]
+        smooth: '0.6',
+        itemStyle: {
+          normal: {
+            color: '#7154ff'
+          }
+        },
+        lineStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 1,
+            x2: 0,
+            y2: 0,
+            colorStops: [{
+              offset: 0,
+              color: '#9effff'
+            },{
+              offset: 1,
+              color: '#9E87FF'
+            }],
+            globalCoord: false // 缺省为 false
+          },
+          shadowColor: 'rgba(158,135,255, 0.3)',
+          shadowBlur: 10,
+          shadowOffsetY: 20
+        },
+        data:[220, 182, 191, 234, 290, 330, 310,220, 182, 191, 234, 290, 330, 310,220, 182, 191, 234, 290, 330, 310,220, 182, 191, 234, 290, 330, 310,340,123,456]
       }]
     };
   };
+  // 活跃用户
   getOption2 = () => {
     return {
       title: {
         text: '活跃用户',
         textStyle: {
           align: 'left',
-          color: '#849ad6',
+          color: '#575fc0',
           fontSize: 14,
           fontWeight: 500
         },
@@ -250,7 +298,6 @@ class start extends Component {
       //   }
       // },
       series: [
-
         {
           name: '去年',
           type: 'bar',
@@ -264,13 +311,127 @@ class start extends Component {
       ]
     };
   };
+  getOption21 = () => {
+    return {
+      title: {
+        text: '活跃用户',
+        textStyle: {
+          align: 'left',
+          color: '#575fc0',
+          fontSize: 14,
+          fontWeight: 500
+        },
+      },
+      color: ['#4dd2d7', '#8b78ff'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        top: '18%',
+        left: '5%',
+        right: '4%',
+        bottom: '1%',
+        containLabel: true
+      },
+      legend: {
+        data: ["去年", "今年"]
+      },
+      xAxis: [{
+        type: 'category',
+        data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14',
+          '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+        splitLine: {
+          show: false
+        },
+        axisTick: {
+          //alignWithLabel: true
+          show: false
+        },
+        axisLabel: {
+          textStyle: {
+            color: '#777',
+            fontSize: 12
+          },
+        },
+        axisLine: {
+          show: false,
+          lineStyle: {
+            color: "#849ad6"
+          }
+        }
+      }],
+      yAxis: [  {
+        type: 'value',
+        axisLabel: {
+          textStyle: {
+            color: '#777',
+            fontSize: 12
+
+          },
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#f1f1f1'
+          }
+        },
+        axisTick: {
+          //alignWithLabel: true
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            color: "#ccc"
+          }
+        }
+      }],
+      barMaxWidth: '20',
+      // label:{
+      //   show:true,
+      //   position:'top',
+      //   formatter:function(params){
+      //     debugger
+      //     return params.value+'%'
+      //   }
+      // },
+      series: [
+        {
+          name: '去年',
+          type: 'bar',
+          stack: "用户",
+          barWidth : 7,//柱图宽度
+          data: [90, 52, 90, 80, 90, 70, 90,90, 52, 90, 80, 90, 70, 90,90, 52, 90, 80, 90, 70, 90,90,70,80],
+          itemStyle: {
+            normal: {
+              barBorderRadius: [10,10,10,10],
+            }
+          }
+        },
+        {
+          name: '今年',
+          type: 'bar',
+          stack: "用户",
+          barWidth : 7,//柱图宽度
+          data: [10, 52, 90, 70, 90, 70, 90,10, 52, 90, 70, 90, 70, 90,10, 52, 90, 70, 90, 70, 90,,90,70,90],
+          itemStyle: {
+            normal: {
+              barBorderRadius: [10,10,10,10],
+            }
+          }
+        },
+      ]
+    }
+  };
+  // 客户端
   getOption3 = () => {
     return {
       title: {
         text: '客户端及SDK用户活跃对比情况',
         textStyle: {
           align: 'left',
-          color: '#849ad6',
+          color: '#575fc0',
           fontSize: 14,
           fontWeight: 500
         },
@@ -320,6 +481,7 @@ class start extends Component {
       }]
     };
   };
+  // 上传
   getOption4 = () => {
     const data = [{
       name: '上传',
@@ -399,6 +561,7 @@ class start extends Component {
           }
         }
       },
+      color: ['#4299f2','#e64e7c','#4ee6c0'],
       series: [{
         name: '数量',
         type: 'pie',
@@ -441,7 +604,343 @@ class start extends Component {
 
     };
   };
+  // 监控信息
+  getOption5 = () => {
+    let angle = 0
+    let value = 80
+    let option = {
+      title: {
+        text: '{a|' + value + '}{c|%}',
+        x: 'center',
+        y: 'center',
+        textStyle: {
+          rich: {
+            a: {
+              fontSize: 20,
+              color: '#29EEF3'
+            },
+            c: {
+              fontSize: 18,
+              color: '#29EEF3',
+            }
+          }
+        }
+      },
+      series: [{
+        name: 'ring5',
+        type: 'custom',
+        coordinateSystem: 'none',
+        renderItem: function (params, api) {
+          return {
+            type: 'arc',
+            shape: {
+              cx: api.getWidth() / 2,
+              cy: api.getHeight() / 2,
+              r: Math.min(api.getWidth(), api.getHeight()) / 2 * 0.8,
+              startAngle: (0 + angle) * Math.PI / 180,
+              endAngle: (90 + angle) * Math.PI / 180
+            },
+            style: {
+              stroke: "#8383FA",
+              fill: "transparent",
+              lineWidth: 1.5
+            },
+            silent: true
+          }
+        },
+        data: [0]
+      }, {
+        name: 'ring5',
+        type: 'custom',
+        coordinateSystem: 'none',
+        renderItem: function (params, api) {
+          let x0 = api.getWidth() / 2
+          let y0 = api.getHeight() / 2
+          let r = Math.min(api.getWidth(), api.getHeight()) / 2 * 0.8
+          let point = getCirlPoint(x0, y0, r, (90 + angle))
+          return {
+            type: 'circle',
+            shape: {
+              cx: point.x,
+              cy: point.y,
+              r: 4
+            },
+            style: {
+              stroke: "#8450F9",
+              fill: "#8450F9"
+            },
+            silent: true
+          }
+        },
+        data: [0]
+      }, {
+        name: 'ring5',
+        type: 'custom',
+        coordinateSystem: 'none',
+        renderItem: function (params, api) {
+          return {
+            type: 'arc',
+            shape: {
+              cx: api.getWidth() / 2,
+              cy: api.getHeight() / 2,
+              r: Math.min(api.getWidth(), api.getHeight()) / 2 * 0.75,
+              startAngle: (180 + angle) * Math.PI / 180,
+              endAngle: (270 + angle) * Math.PI / 180
+            },
+            style: {
+              stroke: "#4386FA",
+              fill: "transparent",
+              lineWidth: 1.5
+            },
+            silent: true
+          }
+        },
+        data: [0]
+      }, {
+        name: "ring5",   // 蓝色
+        type: 'custom',
+        coordinateSystem: "none",
+        renderItem: function (params, api) {
+          let x0 = api.getWidth() / 2;
+          let y0 = api.getHeight() / 2;
+          let r = Math.min(api.getWidth(), api.getHeight()) / 2 * 0.75;
+          let point = getCirlPoint(x0, y0, r, (180 + angle))
+          return {
+            type: 'circle',
+            shape: {
+              cx: point.x,
+              cy: point.y,
+              r: 4
+            },
+            style: {
+              stroke: "#4386FA",      //绿
+              fill: "#4386FA"
+            },
+            silent: true
+          };
+        },
+        data: [0]
+      }, {
+        name: "ring5",
+        type: 'custom',
+        coordinateSystem: "none",
+        renderItem: function (params, api) {
+          return {
+            type: 'arc',
+            shape: {
+              cx: api.getWidth() / 2,
+              cy: api.getHeight() / 2,
+              r: Math.min(api.getWidth(), api.getHeight()) / 2 * 0.65,
+              startAngle: (270 + -angle) * Math.PI / 180,
+              endAngle: (40 + -angle) * Math.PI / 180
+            },
+            style: {
+              stroke: "#0CD3DB",
+              fill: "transparent",
+              lineWidth: 1.5
+            },
+            silent: true
+          };
+        },
+        data: [0]
+      }, {
+        name: "ring5",
+        type: 'custom',
+        coordinateSystem: "none",
+        renderItem: function (params, api) {
+          return {
+            type: 'arc',
+            shape: {
+              cx: api.getWidth() / 2,
+              cy: api.getHeight() / 2,
+              r: Math.min(api.getWidth(), api.getHeight()) / 2 * 0.6,
+              startAngle: (90 + -angle) * Math.PI / 180,
+              endAngle: (220 + -angle) * Math.PI / 180
+            },
+            style: {
+              stroke: "#FF8E89",
+              fill: "transparent",
+              lineWidth: 1.5
+            },
+            silent: true
+          };
+        },
+        data: [0]
+      }, {
+        name: "ring5",
+        type: 'custom',
+        coordinateSystem: "none",
+        renderItem: function (params, api) {
+          let x0 = api.getWidth() / 2;
+          let y0 = api.getHeight() / 2;
+          let r = Math.min(api.getWidth(), api.getHeight()) / 2 * 0.6;
+          let point = getCirlPoint(x0, y0, r, (90 + -angle))
+          return {
+            type: 'circle',
+            shape: {
+              cx: point.x,
+              cy: point.y,
+              r: 4
+            },
+            style: {
+              stroke: "#FF8E89",//粉
+              fill: "#FF8E89"
+            },
+            silent: true
+          };
+        },
+        data: [0]
+      }, {
+        name: "ring5",  //绿点
+        type: 'custom',
+        coordinateSystem: "none",
+        renderItem: function (params, api) {
+          let x0 = api.getWidth() / 2;
+          let y0 = api.getHeight() / 2;
+          let r = Math.min(api.getWidth(), api.getHeight()) / 2 * 0.65;
+          let point = getCirlPoint(x0, y0, r, (270 + -angle))
+          return {
+            type: 'circle',
+            shape: {
+              cx: point.x,
+              cy: point.y,
+              r: 4
+            },
+            style: {
+              stroke: "#0CD3DB",      //绿
+              fill: "#0CD3DB"
+            },
+            silent: true
+          };
+        },
+        data: [0]
+      }, {
+        name: '吃猪肉频率',
+        type: 'pie',
+        radius: ['52%', '40%'],
+        silent: true,
+        clockwise: true,
+        startAngle: 90,
+        z: 0,
+        zlevel: 0,
+        label: {
+          normal: {
+            position: "center",
 
+          }
+        },
+        data: [{
+          value: value,
+          name: "",
+          itemStyle: {
+            normal: {
+              color: { // 完成的圆环的颜色
+                colorStops: [{
+                  offset: 0,
+                  color: '#A098FC' // 0% 处的颜色
+                },
+                  {
+                    offset: 0.3,
+                    color: '#4386FA' // 0% 处的颜色
+                  },
+                  {
+                    offset: 0.6,
+                    color: '#4FADFD' // 0% 处的颜色
+                  },
+                  {
+                    offset: 0.8,
+                    color: '#0CD3DB' // 100% 处的颜色
+                  }, {
+                    offset: 1,
+                    color: '#646CF9' // 100% 处的颜色
+                  }]
+              },
+            }
+          }
+        },
+          {
+            value: 100 - value,
+            name: "",
+            label: {
+              normal: {
+                show: false
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: "#173164"
+              }
+            }
+          }
+        ]
+      }, {
+        name: '吃猪肉频率',
+        type: 'pie',
+        radius: ['32%', '35%'],
+        silent: true,
+        clockwise: true,
+        startAngle: 270,
+        z: 0,
+        zlevel: 0,
+        label: {
+          normal: {
+            position: "center",
+
+          }
+        },
+        data: [{
+          value: value,
+          name: "",
+          itemStyle: {
+            normal: {
+              color: { // 完成的圆环的颜色
+                colorStops: [{
+                  offset: 0,
+                  color: '#00EDF3' // 0% 处的颜色
+                }
+                  , {
+                    offset: 1,
+                    color: '#646CF9' // 100% 处的颜色
+                  }]
+              },
+            }
+          }
+        },
+          {
+            value: 100 - value,
+            name: "",
+            label: {
+              normal: {
+                show: false
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: "#173164"
+              }
+            }
+          }
+        ]
+      }]
+    };
+
+    //获取圆上面某点的坐标(x0,y0表示坐标，r半径，angle角度)
+    function getCirlPoint(x0, y0, r, angle) {
+      let x1 = x0 + r * Math.cos(angle * Math.PI / 180)
+      let y1 = y0 + r * Math.sin(angle * Math.PI / 180)
+      return {
+        x: x1,
+        y: y1
+      }
+    }
+    setInterval(()=>{
+      angle = angle + 3;
+      option = option
+    })
+    return option;
+  }
+
+  // 地图
   getOptionmap = () => {
     const cured = [
 
@@ -558,7 +1057,6 @@ class start extends Component {
       64224,67022,67863
 
     ];
-
     const dead = [
 
       3,
@@ -10247,7 +10745,7 @@ class start extends Component {
         tooltip: {},
         series: [{
           type: 'map',
-          name: '新增人数',
+          name: '新增用户',
           map: 'china',
           roam: true
         }
@@ -10357,9 +10855,11 @@ class start extends Component {
 
     return (
       <Fragment>
+          {/*标题栏*/}
           <div className={styles.head}>
             {/*<img src={pic} className={styles.pic}/>*/}
           </div>
+          {/*标签页*/}
           <div className={styles.title}>
             <Row>
               <Col span={8} onClick={()=>{this.setNum(1)}}>
@@ -10367,8 +10867,7 @@ class start extends Component {
                   本日情况
                 </span>
               </Col>
-              <Col
-                span={8} onClick={()=>{this.setNum(2)}}>
+              <Col span={8} onClick={()=>{this.setNum(2)}}>
                 <span className={this.state.num == 2 ? styles.titlechoose : styles.titleItem} >
                   本月情况
                 </span>
@@ -10391,61 +10890,105 @@ class start extends Component {
               <div className={styles.lup}>
                 <Table className={styles.lupword} dataSource={dataSource} columns={columns} size="small" />
               </div>
-              <div className={styles.ldown}>
+              {/*<div className={styles.ldown}>
                 <div><img src={virus} style={{height: '22px'}}/>
-                  <span style={{color: '#836de8',fontSize: '14px'}}>信息播报</span>
+                  <span style={{color: '#575fc0',fontSize: '14px'}}>信息播报</span>
                 </div>
                 <Row>
                   <Col span={1} style={{ marginLeft: '5px',marginTop: '20px'}}>
-                    <img src={list} style={{height: '18vh',objectFit:'cover'}}/>
+                    <img src={list} style={{height: '22vh',objectFit:'cover'}}/>
                   </Col>
                   <Col span={19}>
                     <News />
                   </Col>
                 </Row>
 
-                {/*<Timeline>*/}
-                {/*  <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>*/}
-                {/*  <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>*/}
-                {/*  <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>*/}
-                {/*</Timeline>*/}
+                <Timeline>
+                  <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
+                  <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>
+                  <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
+                </Timeline>
 
-              </div>
+              </div>*/}
             </Col>
-            <Col span={12} className={styles.mid}>
+            <Col span={13} className={styles.mid}>
               <div className={styles.mup}>
-                <ReactEcharts option={this.getOptionmap()}  style={{ height: '64vh' }} />
-
+                <Row className={styles.fline} >
+                  <Col className={styles.title1} span={8}>
+                    <Row>
+                      <Col span={1} offset={7}>
+                        <img src={nn} style={{height: '28px', margin: '5px'}}/>
+                      </Col>
+                      <Col span={16}>
+                        <span style={{ paddingRight: "50px",textAlign: "left"}}>使用次数</span>
+                        <div className={styles.sline}>
+                          <div className={styles.title1} style={{ color: '#e02828',textAlign: 'left'}}>
+                            11
+                            <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{color: '#e02828'}}>+2</span></span>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col className={styles.title2} span={8}>
+                    <Row>
+                      <Col span={1} offset={7}>
+                        <img src={addUser} style={{height: '28px', margin: '5px'}}/>
+                      </Col>
+                      <Col span={12}>
+                        <span style={{textAlign: 'left'}}>新增用户</span>
+                        <div className={styles.sline}>
+                          <div className={styles.title1} style={{ color: '#e02828', textAlign: 'left'}}>
+                            21
+                            <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{color: '#0456f9'}}>+2</span></span>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col className={styles.title3} span={8}>
+                    <Row>
+                      <Col span={1} offset={5}>
+                        <img src={activeUser} style={{height: '28px', margin: '5px'}}/>
+                      </Col>
+                      <Col span={16}>
+                        <span style={{textAlign: 'left'}}>活跃用户/总注册用户</span>
+                        <div className={styles.sline}>
+                          <div className={styles.title1} style={{ color: '#e02828',textAlign: 'left'}}>
+                            11/<span style={{ color: '#65c456'}}>22</span>
+                            <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{color: '#65c456'}}>+2</span></span>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  {/*<Col className={styles.title4} span={6}>
+                    <img src={percent} style={{height: '24px'}}/>活跃占比
+                  </Col>*/}
+                </Row>
+                {/*<Row className={styles.sline}>
+                  <Col className={styles.title1} span={7} offset={1} style={{ color: '#e02828'}}>
+                    1111
+                    <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{color: '#e02828'}}>+2</span></span>
+                  </Col>
+                  <Col className={styles.title2} span={7} offset={1}  style={{ color: '#0456f9'}}>
+                    21
+                    <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{ color: '#0456f9'}}>+2</span></span>
+                  </Col>
+                  <Col className={styles.title3} span={7} offset={1} >11/<span style={{ color: '#65c456'}}>22</span>
+                    <span className={styles.tline} style={{color:'#bcbcbc', marginLeft: '5px'}}>同比{this.state.msg} <span style={{ color: '#65c456'}}>+2</span></span>
+                  </Col>
+                  <Col className={styles.title4} span={6}>20%</Col>
+                </Row>*/}
+                {/*<Row className={styles.tline}>
+                  <Col className={styles.title1} span={8}>同比{this.state.msg} <span style={{color: '#e02828'}}>+2</span></Col>
+                  <Col className={styles.title2} span={8}>同比{this.state.msg} <span style={{ color: '#0456f9'}}>+2</span></Col>
+                  <Col className={styles.title3} span={8}>同比{this.state.msg} <span style={{ color: '#65c456'}}>+2</span></Col>
+                  <Col className={styles.title4} span={6}>同比{this.state.msg} +2</Col>
+                </Row>*/}
               </div>
               <div className={styles.mdown}>
-
-                <Row className={styles.fline} >
-                  <Col className={styles.title1} span={6}>
-                    <img src={num} style={{height: '20px'}}/>使用次数
-                  </Col>
-                  <Col className={styles.title2} span={6}>
-                    <img src={user} style={{height: '20px'}}/>新增用户
-                  </Col>
-                  <Col className={styles.title3} span={6}>
-                    <img src={user} style={{height: '20px'}}/>活跃用户/总注册用户
-                  </Col>
-                  <Col className={styles.title4} span={6}>
-                    <img src={percent} style={{height: '20px'}}/>活跃占比
-                  </Col>
-                </Row>
-                <Row className={styles.sline}>
-                  <Col className={styles.title1} span={6} style={{ color: '#e02828'}}>1111</Col>
-                  <Col className={styles.title2} span={6} style={{ color: '#0456f9'}}>21</Col>
-                  <Col className={styles.title3} span={6} >11/<span style={{ color: '#65c456'}}>22</span></Col>
-                  <Col className={styles.title4} span={6}>20%</Col>
-                </Row>
-                <Row className={styles.tline}>
-                  <Col className={styles.title1} span={6}>同比{this.state.msg} <span style={{color: '#e02828'}}>+2</span></Col>
-                  <Col className={styles.title2} span={6}>同比{this.state.msg} <span style={{ color: '#0456f9'}}>+2</span></Col>
-                  <Col className={styles.title3} span={6}>同比{this.state.msg} <span style={{ color: '#65c456'}}>+2</span></Col>
-                  <Col className={styles.title4} span={6}>同比{this.state.msg} +2</Col>
-                </Row>
-
+                <ReactEcharts option={this.getOptionmap()}  style={{ height: '55vh' }} />
               </div>
             </Col>
             <Col span={6} className={styles.right}>
@@ -10456,23 +10999,53 @@ class start extends Component {
                   <Radio.Button value="c">按月分析</Radio.Button>
                 </Radio.Group>
               </div>*/}
-              <div className={styles.r1}>
+              {/*<div className={styles.r1}>
                 <ReactEcharts option={this.getOption1()}  style={{ height: '20vh' }}/>
+              </div>*/}
 
-              </div>
-              <div className={styles.r2}>
-                <ReactEcharts option={this.getOption2()}  style={{ height: '20vh' }}/>
+              {/*<div className={styles.r2}>
+                <ReactEcharts option={this.getOption21()}  style={{ height: '20vh' }}/>
+              </div>*/}
 
-              </div>
-              <div className={styles.r3}>
+              {/*<div className={styles.r3}>
                 <ReactEcharts option={this.getOption3()}  style={{ height: '20vh' }}/>
+              </div>*/}
 
+              <div className={styles.r1}>
+                  <div><img src={virus} style={{height: '22px'}}/>
+                    <span style={{color: '#575fc0', fontSize: '14px'}}>信息播报</span>
+                  </div>
+                  <Row>
+                    <Col span={1} style={{marginLeft: '5px', marginTop: '10px'}}>
+                      <img src={list} style={{height: '14vh', objectFit: 'cover'}}/>
+                    </Col>
+                    <Col span={19}>
+                      <News/>
+                    </Col>
+                  </Row>
+              </div>
+              <br/>
+              <div className={styles.r2}>
+                <div>
+                  <span style={{color: '#575fc0', fontSize: '14px'}}>监控信息</span>
+                  <ReactEcharts option={this.getOption5()}  style={{ height: '18vh' }}/>
+                </div>
               </div>
               <div className={styles.r4}>
-                <div style={{ height: '2vh',fontSize:14,color:'#849ad6',fontWeight:500,marginLeft:10 }}>使用类型占比分析</div>
+                <div style={{ height: '2vh',fontSize:14,color:'#575fc0',fontWeight:500,marginLeft:10 }}>使用类型占比分析</div>
                 <ReactEcharts option={this.getOption4()}  style={{ height: '18vh' }}/>
               </div>
             </Col>
+          </Row>
+          <Row style={{ backgroundColor: '#f5f5f5', padding: '3px'}}>
+            <div className={styles.bottomContent}>
+              <Col span={12} className={styles.bottomLeft} >
+                <ReactEcharts option={this.getOption1()}  style={{ height: '20vh' }}/>
+              </Col>
+              <Col span={12} className={styles.bottomRight}>
+                <ReactEcharts option={this.getOption21()}  style={{ height: '20vh' }}/>
+              </Col>
+            </div>
           </Row>
         </div>
       </Fragment>
